@@ -1,0 +1,567 @@
+/* VARS */
+body {
+	--link: #ff8000;
+	--link_over: #ff9933;
+
+	--button: #ff8000;
+	--button_over: #ff9933;
+
+	--border_radius: 0.25rem;
+}
+/* VARS */
+
+/* HTML */
+body {
+	font-family: helvetica, arial, tahoma;
+	margin: 0;
+	background-color: #000;
+	position: relative;
+}
+
+h2, h3 {
+	width: 100%;
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.2rem;
+}
+
+h3 {
+	font-size: 1.0rem;
+}
+
+a {
+	color: var(--link);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--link_over);
+	text-decoration: underline;
+}
+
+svg {
+	fill: currentColor;
+	vertical-align: text-top;
+	height: 1.2em;
+}
+
+p {
+	font-size: 1.0rem;
+	width: 100%;
+	margin: 0;
+	line-height: 1.5rem;
+}
+
+ul {
+	margin: 0;
+}
+
+li {
+	font-size: 1.0rem;
+	line-height: 1.5rem;
+}
+/* HTML */
+
+/* LAYOUT */
+.FlexContainer {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.FlexNoWrap {
+	flex-wrap: nowrap;
+}
+
+.ExternalLink svg {
+	margin-left: 0.25rem;
+}
+/* LAYOUT */
+
+/* TABLE */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid hsl(240, 5%, 20%);
+	font-size: 0.9rem;
+	font-weight: normal;
+}
+
+table:nth-child(1), tr:nth-child(1) {
+	background: hsl(240, 5%, 10%);
+	border-bottom: 1px solid hsl(240, 5%, 20%);
+}
+
+table svg {
+	height: 1.2em;
+	margin-right: 0.5em;
+	margin-left: 0;
+}
+
+table a:hover svg {
+	fill: var(--link_over);
+}
+
+tr {
+	width: 100%;
+}
+
+tr:nth-of-type(even) td {
+	background: hsl(240, 5%, 12.5%);
+	border: 0;
+}
+
+tr:hover td {
+	background: hsl(240, 5%, 20%);
+}
+
+th, td {
+	text-align: left;
+	padding: 0.75rem 1rem;
+	font-weight: normal;
+}
+
+th {
+	position: relative;
+	z-index: 0;
+}
+
+.Sort, .Filter {
+	color: var(--link);
+	padding: 0.25rem;
+	margin-left: -0.25rem;
+	cursor: pointer;
+	width: 100%;
+	display: inline-block;
+}
+
+.Sort:hover, .Filter:hover {
+	background: hsl(240, 5%, 20%);
+}
+
+.Sort svg, .Filter svg {
+	height: 1.2em;
+	margin-left: 1.0em;
+}
+
+.FilterPop {
+	visibility: hidden;
+	z-index: 1;
+	position: absolute;
+	top: calc(100% - 0.5rem);
+	left: 0.75rem;
+	background: hsl(240, 5%, 15%);
+	min-width: 8rem;
+	border-radius: var(--border_radius);
+	overflow: hidden;
+	box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.5), 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.FilterPop span {
+	width: calc(100% - 1.0rem);
+	display: inline-block;
+	padding: 0.25rem 0.5rem;
+	cursor: pointer;
+}
+
+.FilterPop span:hover {
+	background: hsl(240, 5%, 25%);
+}
+/* TABLE */
+
+/* SCROLL */
+.ScrollBar {
+	max-height: 30vh;
+  overflow-y: auto;
+}
+
+.ScrollBar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ScrollBar::-webkit-scrollbar-track {
+  background: #4d4d4d;
+  border-radius: var(--border_radius);
+}
+
+.ScrollBar::-webkit-scrollbar-thumb {
+	background: #808080;
+	border-radius: var(--border_radius);
+}
+/* SCROLL */
+
+/* HEADER */
+#HeaderContainer {
+	background: #000;
+	width: 100%;
+	float: left;
+	position: relative;
+	overflow: hidden;
+	border-top: 0.5rem solid #000;
+	aspect-ratio: 10;
+	max-height: 8rem;
+	min-height: 3.5rem;
+}
+
+#Header {
+	position: relative;
+	z-index: 100;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+
+#Header h1 {
+	text-align: center;
+	margin: 0;
+	height: 100%;
+	display: flex;
+  align-items: center;
+}
+
+#Header h1 a {
+	height: calc(100% - 1rem);
+	width: 100%;
+	display: inline-block;
+	padding: 0.5rem 0;
+	max-height: 7rem;
+}
+
+#Header h1 a span {
+	text-align: center;
+	display: inline-block;
+	background: url(images/samp_logo.png) center center no-repeat;
+	background-size: contain;
+	height: 100%;
+	width: 100%;
+	text-indent: -9999px;
+}
+
+#ArtworkContainer {
+	width: 200%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.Artwork {
+	float: left;
+	clear: none;
+	width: var(--width);
+	height: calc(100% + 1.0rem);
+	border-right: 0.5vw solid black;
+	z-index: var(--index);
+	position: relative;
+	transform: perspective(10.0vw) rotateX(var(--skew));
+	margin-left: -0.5rem;
+	margin-top: -0.5rem;
+}
+
+.ArtworkCenter {
+	background-position-y: center !important;
+}
+
+.Artwork span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: var(--artwork);
+	background-size: cover;
+}
+
+#Stats {
+	width: calc(100% - 1rem);
+	background: #000;
+	display: flex;
+	flex-wrap: nowrap;
+	color: hsl(0, 0%, 90%);
+	padding: 0.5rem;
+	font-size: 1.0rem;
+	gap: 1rem;
+}
+
+#Stats svg {
+	margin-right: 0.25rem;
+}
+
+#Stats span {
+	text-align: center;
+	width: calc(100% / 3 - 2rem / 3);
+}
+
+#Stats span:nth-of-type(1) {
+	text-align: left;
+}
+
+#Stats span:nth-last-of-type(1) {
+	text-align: right;
+}
+/* HEADER */
+
+/* MAIN */
+#Page {
+	padding: 1rem;
+	width: calc(100% - 2rem);
+	display: flex;
+	gap: 1rem;
+	background-color: hsl(240, 5%, 5%);
+	align-items: flex-start;
+}
+
+#Main {
+	width: 80%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+/* MAIN */
+
+/* NAV */
+#Nav {
+	width: calc(20% - 1rem);
+	padding: 0.5rem;
+	padding-bottom: 1rem;
+	background: hsl(240, 5%, 10%);
+	border-radius: var(--border_radius);
+	color: hsl(0, 0%, 90%);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+#Nav h2 {
+	margin: 0.5rem;
+}
+
+.NavLinks {
+	width: 100%;
+}
+
+.NavLinks a {
+	display: inline-block;
+	width: calc(100% - 1rem);
+	padding: 0.5rem;
+	border-radius: var(--border_radius);
+}
+
+.NavLinks a:hover {
+	background: hsl(240, 5%, 15%);
+	color: var(--link);
+	text-decoration: none;
+}
+
+.NavLinks svg {
+	margin-right: 0.5rem;
+}
+
+.NavLinks .ExternalLink {
+	height: 1.2em;
+	float: right;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.FollowUs {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.FollowUs a {
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-left: 0.5rem;
+}
+
+.FollowUs a svg {
+	height: 100%;
+}
+/* NAV */
+
+/* BUTTON */
+.Button svg {
+	margin-right: 0.25rem;
+}
+
+.Button {
+	background: var(--button);
+	color: #fff;
+	display: inline-block;
+	font-weight: bold;
+	padding: 0.25rem 0.75rem;
+	border-radius: var(--border_radius);
+	font-size: 1.0rem;
+}
+
+.Button:hover {
+	background: var(--button_over);
+	color: #fff;
+	text-decoration: none;
+}
+/* BUTTON */
+
+/* CONTENT */
+.Container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	background: hsl(240, 5%, 10%);
+	border-radius: var(--border_radius);
+	padding: 1rem;
+	color: hsl(0, 0%, 90%);
+	width: calc(100% - 2rem);
+}
+
+.Container h2 svg {
+	height: 1.2em;
+	margin-right: 0.5em;
+}
+
+.Container p {
+	width: 100%;
+}
+
+.Red {
+	color: #ff3333;
+}
+
+.DownloadContainer {
+	padding-left: 0;
+	display: inline-block;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.DownloadContainer li {
+	list-style: none;
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 0.5rem;
+	width: 100%;
+	align-items: center;
+}
+
+.ServerItem, .ServerTitle {
+	background: hsl(240, 5%, 15%);
+	padding: 1rem;
+	position: relative;
+	border-radius: var(--border_radius);
+}
+
+.ServerDetails {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	flex-direction: column;
+}
+
+.ServerItems {
+	--items: 3;
+	--gap: 1rem;
+	gap: var(--gap);
+}
+
+.ServerItem {
+	width: calc((100% - var(--gap) * (var(--items) - 1)) / var(--items) - 2rem);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.ServerTitle {
+	width: calc(100% - 2rem);
+}
+
+.ServerName {
+	font-size: 1.5rem !important;
+	margin-bottom: 0.5rem;
+	width: auto;
+}
+
+.ServerItem h3, .ServerTitle h3 {
+	color: hsl(0, 0%, 95%);
+}
+
+.ServerItem p, .ServerTitle p {
+	color: hsl(0, 0%, 70%);
+	width: auto;
+}
+
+.ServerItem svg, .ServerTitle svg {
+	margin-left: 0;
+	margin-right: 0.5em;
+}
+
+.ServerDownload {
+	margin-left: auto;
+	display: flex;
+  align-items: center;
+}
+/* CONTENT */
+
+/* FOOTER */
+#FooterContainer {
+	background: #000;
+	width: 100%;
+}
+
+#FooterWrap {
+	padding: 2rem;
+}
+
+#Footer {
+	margin: 0 auto;
+	width: 100%;
+}
+
+#Footer a {
+	color: hsl(0, 0%, 95%);
+	font-weight: bold;
+}
+
+#Footer a:hover {
+	text-decoration: underline;
+}
+
+#Footer p {
+	color: hsl(0, 0%, 95%);
+	line-height: 1.5rem;
+	margin: 0;
+	width: 100%;
+	font-size: 1.0rem;
+}
+
+#Backlinks {
+	margin-top: 1.5rem;
+	width: 100%;
+}
+
+#Backlinks a {
+	margin-right: 1rem;
+	font-size: 0.7rem;
+}
+/* FOOTER */
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+	#Page {
+		flex-wrap: wrap;
+	}
+
+	#Nav {
+		width: calc(100% - 1rem);
+	}
+
+	#Main {
+		width: 100%;
+	}
+}
+/* RESPONSIVE */
